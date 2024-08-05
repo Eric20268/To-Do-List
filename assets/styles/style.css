@@ -1,0 +1,297 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+*{
+    margin:0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Barlow Condensed', sans-serif;
+}
+
+body{
+    min-height: 100vh;
+    max-width: 100vw;
+
+    background:url("../img/fundo.jpg");
+    background-size: cover;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container-tasks{
+    min-height: 95vh;
+    width: 50vw;
+
+    background:#fff;
+    box-shadow: 0 10px 10px 10px #00000051;
+
+    border-radius: 20px;
+    padding: 10px 30px;
+
+    display: flex;
+    flex-direction: column;
+}
+
+.titulo-box{
+    width: 100%;
+    height: fit-content;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    border-bottom: 2px solid #0000009b;
+}
+
+.titulo{
+    font-size: 45px;
+    padding:30px 0;
+}
+
+.add-tarefa-box{
+    width: 100%;
+    height: fit-content;
+
+    border-bottom: 2px solid #0000009b;
+    padding:30px 0;
+
+    display: flex;
+    gap:10px;
+
+    position: relative;
+}
+
+.input-edit{
+    font-size: 30px;
+    padding:10px 30px;
+    border:1px solid black;
+    border-radius: 5px;
+    outline: none;
+}
+
+.texto-flutuante{
+    position: absolute;
+    top:50%;
+    left:25%;
+    transform: translate(-50%,-50%);
+
+    font-size: 35px;
+    font-weight: 400;
+    text-transform: capitalize;
+
+    transition: 0.4s;
+}
+
+#tarefaInput:focus{
+    border-color: #680c99;
+}
+
+#tarefaInput:focus + .texto-flutuante{
+    top:20%;
+    color: #680c99;
+    background: #fff;
+    padding:0 10px;
+}
+
+.btn-container{
+    background:#680c99;
+    width: fit-content;
+    padding:10px;
+    border-radius: 10px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    transition: 0.3s;
+}
+
+.botao{
+    font-size: 35px;
+    color:#fff;
+    cursor: pointer;
+}
+
+.btn-container:hover{
+    transform: scale(1.08);
+}
+
+.opcoes{
+    width: 100%;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    border-bottom: 2px solid #0000009b;
+    padding:30px 0;
+}
+
+.pesquisa-container{
+    display: flex;
+    flex-direction: column;
+
+    gap:10px;
+
+    border-right: 2px solid #0000009b;
+    padding-right:50px;
+}
+
+.titulo-opcoes{
+    font-size: 25px;
+}
+
+.input-container{
+    display: flex;
+    gap:10px;
+}
+
+#pesquisa-input{
+    width: 300px;
+    height: 50px;
+    font-size: 20px;
+}
+
+#filtro{
+    width: 150px;
+    height: 50px;
+    font-size: 20px;
+}
+
+#filtro option{
+    font-size: 20px;
+}
+
+#botaoPesquisa{
+    font-size: 25px;
+}
+
+.filtro-container{
+    display: flex;
+    flex-direction: column;
+    gap:10px;
+}
+
+.tarefas-container{
+    padding:10px;
+}
+
+.tarefas-list{
+    min-height: 180px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap:10px;
+}
+
+.item-lista{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding:5px 10px;
+    font-size: 25px;
+    position: relative;
+}
+
+
+.texto-item{
+    font-weight: 500;
+    text-transform: capitalize;
+    position: relative;
+    transition: 0.8s;
+    z-index: 2;
+}
+
+.texto-item::before{
+    content: " ";
+    position: absolute;
+    top:60%;
+    left:50%;
+    transform: translate(-50%,-50%);
+    height: 3px;
+    width: 0%;
+    background:#fff;
+    transition: 0.8s;
+}
+
+.botoes{
+    display: flex;
+    gap:15px;
+    z-index: 2;
+}
+
+.botoes i{
+    border:2px solid #680c99;
+    padding:5px 10px;
+    cursor: pointer;
+}
+
+.botoes i:hover{
+    background:#680c99;
+    color:#fff;
+}
+
+.item-lista.concluido{
+    color: #fff;
+}
+
+.item-lista::before{
+    content: " ";
+    position: absolute;
+    top:50%;
+    left:50%;
+    transform: translate(-50%,-50%);
+    width: 0%;
+    height: 100%;
+    border-radius: 5px;
+    background:#680c99;
+    z-index: 1;
+    transition: 0.3s ease-in-out;
+}
+
+.item-lista.concluido::before{
+    width: 100%;
+}
+
+.item-lista.concluido .botoes i{
+    border-color: #fff;
+}
+
+.item-lista.concluido .texto-item::before{
+    width: 110%;
+}
+
+.input-edit-container{
+    display: none;
+}
+
+.input-edit-container.editar{
+    position: absolute;
+    z-index: 10;
+    display: flex;
+    gap:5px;
+    align-items: center;
+}
+
+.editar-texto{
+    height: 35px;
+    width: 240px;
+    padding:10px 30px;
+    font-size: 20px;
+}
+
+.btn-edit-confirm{
+    color:#680c99;
+    background:#f2f2f2;
+    border:1px solid black;
+    border-radius: 10px;
+    padding:3px 10px;
+    font-size: 24px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.btn-edit-confirm:active{
+    transform: scale(1.08);
+}

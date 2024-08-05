@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>To Do List</title>
+        <link rel="stylesheet" href="assets/styles/style.css">
+        <link rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+        <script defer src="assets/scripts/script.js"></script>
+    </head>
+    <body>
+        <main class="container-tasks">
+
+            <div class="titulo-box">
+                <h1 class="titulo">To Do List</h1>
+            </div>
+
+            <div class="add-tarefa-box">
+                <input type="text" class="input-edit" id="tarefaInput"
+                    autocomplete="off" maxlength="30">
+                <label for="tarefaInput" class="texto-flutuante">Adicone uma
+                    tarefa</label>
+                <div class="btn-container"><i class="bi bi-plus-lg botao"
+                        id="btn-adicionar-tarefa"></i></div>
+            </div>
+
+            <div class="opcoes">
+
+                <div class="pesquisa-container">
+                    <h3 class="titulo-opcoes">Pesquisar:</h3>
+                    <div class="input-container">
+                        <input type="text" class="input-edit"
+                            id="pesquisa-input" placeholder>
+                        <div class="btn-container"><i class="bi bi-search botao"
+                                id="botaoPesquisa"></i></div>
+                    </div>
+                </div>
+                <div class="filtro-container">
+                    <h3 class="titulo-opcoes">Filtrar:</h3>
+                    <select id="filtro">
+                        <option value="todos">todos</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="tarefas-container">
+                <ul class="tarefas-list"></ul>
+            </div>
+
+        </main>
+    </body>
+</html>
