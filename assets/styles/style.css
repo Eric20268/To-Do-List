@@ -17,6 +17,8 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
+
+    position: relative;
 }
 
 .container-tasks{
@@ -297,4 +299,56 @@ body{
 
 .btn-edit-confirm:active{
     transform: scale(1.08);
+}
+
+/*Notificação*/
+.container-notificacao{
+    width: 30vw;
+    height: 80px;
+
+    background:#fff;
+    border-radius: 10px;
+    border-left:5px solid #680c99;
+
+    position: absolute;
+    top:-25%;
+
+    display: flex;
+    justify-content: center;
+
+    overflow: hidden;
+
+    transition: 0.5s ease-in-out;
+}
+
+.container-notificacao.ativar-notificacao{
+    top:5%;
+}
+
+.container-notificacao::before{
+    content: " ";
+    position: absolute;
+    bottom:0;
+    left:0;
+    background:#680c99;
+    height: 5px;
+    width: 0%;
+    transition: 3s ease-in-out;
+}
+
+.container-notificacao.ativar-notificacao::before{
+    width: 100%;
+}
+
+.notificacao{
+    display: flex;
+    align-items: center;
+    gap:10px;
+    text-transform: capitalize;
+    font-size: 23px;
+}
+
+.notificacao-icon{
+    color:#680c99;
+    font-size:30px;
 }

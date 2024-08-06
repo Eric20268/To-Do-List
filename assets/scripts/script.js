@@ -57,7 +57,16 @@ document.addEventListener('DOMContentLoaded', () => {
 function adicionarItems () {
   let tarefa = inputTarefa.value
 
-  listaTarefas.innerHTML += `<li class="item-lista">
+  if (!tarefa) {
+    const notificacao = document.querySelector(".container-notificacao")
+    const tempoNotificacao = 3000
+
+    notificacao.classList.add("ativar-notificacao")
+    setTimeout(()=>{
+      notificacao.classList.remove("ativar-notificacao")
+    },tempoNotificacao)
+  } else {
+    listaTarefas.innerHTML += `<li class="item-lista">
                     <div class="input-edit-container">
                         <input type="text" class="input-edit editar-texto" autofocus maxlength="30">
                         <button class="btn-edit-confirm">Confirmar</button>
@@ -70,35 +79,38 @@ function adicionarItems () {
                     </div>
                 </li>`
 
-  inputTarefa.value = ''
+    inputTarefa.value = ''
 
-  const botoesRemover = document.querySelectorAll('.btn-excluir')
-  botoesRemover.forEach(botao => {
-    botao.addEventListener('click', removerItems)
-  })
-  function removerItems () {
-    this.parentElement.parentElement.remove()
-  }
+    const botoesRemover = document.querySelectorAll('.btn-excluir')
+    botoesRemover.forEach(botao => {
+      botao.addEventListener('click', removerItems)
+    })
+    function removerItems () {
+      this.parentElement.parentElement.remove()
+    }
 
-  const botoesEditar = document.querySelectorAll('.btn-editar')
-  botoesEditar.forEach(button => {
-    button.addEventListener('click', () => {
-      let inputContainer = button.parentElement.parentElement.firstElementChild
+    const botoesEditar = document.querySelectorAll('.btn-editar')
+    botoesEditar.forEach(button => {
+      button.addEventListener('click', () => {
+        let inputContainer =
+          button.parentElement.parentElement.firstElementChild
 
-      inputContainer.classList.toggle('editar')
+        inputContainer.classList.toggle('editar')
 
-      let input = inputContainer.querySelector('.editar-texto')
-      input.value =
-        inputContainer.parentElement.querySelector('.texto-item').textContent
+        let input = inputContainer.querySelector('.editar-texto')
+        input.value =
+          inputContainer.parentElement.querySelector('.texto-item').textContent
 
-      let botaoConfirm = inputContainer.querySelector('.btn-edit-confirm')
-      botaoConfirm.addEventListener('click', () => {
-        inputContainer.parentElement.querySelector('.texto-item').textContent =
-          input.value
-        inputContainer.classList.remove('editar')
+        let botaoConfirm = inputContainer.querySelector('.btn-edit-confirm')
+        botaoConfirm.addEventListener('click', () => {
+          inputContainer.parentElement.querySelector(
+            '.texto-item'
+          ).textContent = input.value
+          inputContainer.classList.remove('editar')
+        })
       })
     })
-  })
+  }
 }
 
 function marcarConcluido () {
